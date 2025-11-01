@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        /* Basic page styling */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #e1bee7);
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Center container styling */
+        .container {
+            text-align: center;
+            padding: 30px 50px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        /* Heading styles */
+        h1 {
+            font-size: 2.5em;
+            color: #0288d1;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin: 10px 0;
+            color: #37474f;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Result-specific colors */
+        .result-ckd {
+            color: #d32f2f;
+        }
+
+        .result-not-ckd {
+            color: #388e3c;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        {% if y_pred is not none %}
+            {% if y_pred[0] == 0 %}
+                <h2 class="result-ckd">Prediction: CKD</h2>
+            {% endif %}
+            {% if y_pred[0] == 1 %}
+                <h2 class="result-not-ckd">Prediction: Not CKD</h2>
+            {% endif %}
+        {% else %}
+            <h2>No prediction available.</h2>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kidney Disease Classification Input Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #88d3ce, #6e45e2);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 2s ease;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            flex-wrap: wrap;
+            animation: scaleUp 0.6s ease-out;
+        }
+
+        .form-group {
+            width: 48%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #6e45e2;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="number"]:focus,
+        select:focus {
+            border-color: #6e45e2;
+            box-shadow: 0 0 10px rgba(110, 69, 226, 0.4);
+            outline: none;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 12px 30px;
+            background-color: #6e45e2;
+            color: #ffffff;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 5px 15px rgba(110, 69, 226, 0.3);
+            margin: 10px 10px;
+            width: 100%;
+            max-width: 150px;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #5643cc;
+            transform: translateY(-3px);
+        }
+
+        .buttons {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .form-group {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            form {
+                padding: 20px;
+            }
+
+            input[type="submit"],
+            input[type="reset"] {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Kidney Disease Classification</h1>
+    <form action="/prediction" method="post" enctype="multipart/form-data" id="myForm">
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" step="1" required />
+        </div>
+
+        <div class="form-group">
+            <label for="bp">Blood Pressure:</label>
+            <input type="number" id="bp" name="bp" step="1" required />
+        </div>
+
+        <div class="form-group">
+            <label for="sg">Specific Gravity:</label>
+            <input type="number" id="sg" name="sg" step="0.001" required />
+        </div>
+
+        <div class="form-group">
+            <label for="al">Albumin Level:</label>
+            <input type="number" id="al" name="al" step="1" required />
+        </div>
+
+        <div class="form-group">
+            <label for="su">Sugar Level:</label>
+            <input type="number" id="su" name="su" step="1" required />
+        </div>
+
+        <div class="form-group">
+            <label for="rbc">Red Blood Cells:</label>
+            <select id="rbc" name="rbc" required>
+                <option value="abnormal">Abnormal</option>
+                <option value="normal">Normal</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="pc">Pus Cells:</label>
+            <select id="pc" name="pc" required>
+                <option value="abnormal">Abnormal</option>
+                <option value="normal">Normal</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="pcc">Pus Cell Clumps:</label>
+            <select id="pcc" name="pcc" required>
+                <option value="notpresent">Not Present</option>
+                <option value="present">Present</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="ba">Bacteria:</label>
+            <select id="ba" name="ba" required>
+                <option value="notpresent">Not Present</option>
+                <option value="present">Present</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="bgr">Blood Glucose Random:</label>
+            <input type="number" id="bgr" name="bgr" step="1" required />
+        </div>
+
+        <div class="form-group">
+            <label for="bu">Blood Urea:</label>
+            <input type="number" id="bu" name="bu" step="1" required />
+        </div>
+
+        <div class="form-group">
+            <label for="sc">Serum Creatinine:</label>
+            <input type="number" id="sc" name="sc" step="0.01" required />
+        </div>
+
+        <div class="form-group">
+            <label for="sod">Sodium Level:</label>
+            <input type="number" id="sod" name="sod" step="1" required />
+        </div>
+
+        <div class="form-group">
+            <label for="pot">Potassium Level:</label>
+            <input type="number" id="pot" name="pot" step="0.01" required />
+        </div>
+
+        <div class="form-group">
+            <label for="hemo">Hemoglobin Level:</label>
+            <input type="number" id="hemo" name="hemo" step="0.1" required />
+        </div>
+
+        <div class="form-group">
+            <label for="pcv">Packed Cell Volume:</label>
+            <input type="number" id="pcv" name="pcv" step="1" required />
+        </div>
+
+        <div class="form-group">
+            <label for="wc">White Blood Cell Count:</label>
+            <input type="number" id="wc" name="wc" step="0.01" required />
+        </div>
+
+        <div class="form-group">
+            <label for="rc">Red Blood Cell Count (RBC):</label>
+            <input type="number" id="rc" name="rc" step="0.01" required />
+        </div>
+
+        <div class="form-group">
+            <label for="htn">Hypertension:</label>
+            <select id="htn" name="htn" required>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="dm">Diabetes Mellitus:</label>
+            <select id="dm" name="dm" required>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="cad">Coronary Artery Disease:</label>
+            <select id="cad" name="cad" required>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="appet">Appetite:</label>
+            <select id="appet" name="appet" required>
+                <option value="good">Good</option>
+                <option value="poor">Poor</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="pe">Pedal Edema:</label>
+            <select id="pe" name="pe" required>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="ane">Anemia:</label>
+            <select id="ane" name="ane" required>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
+        </div>
+
+        <div class="buttons">
+            <input type="submit" value="Submit" />
+            <input type="reset" value="Reset" />
+        </div>
+    </form>
+</body>
+
+</html>

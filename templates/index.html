@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIDNEY</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #f0f4f8, #d9e8fc);
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #005f73;
+            animation: fadeInTitle 2s ease-in-out;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: #028090;
+            animation: slideIn 2s ease-out;
+        }
+
+        h4 {
+            font-size: 1.5em;
+            color: #05668d;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Button styling */
+        #myForm input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #02c39a;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+
+        #myForm input[type="submit"]:hover {
+            background-color: #028090;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Animations */
+        @keyframes fadeInTitle {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>CRONIC KIDNEY WEB APP</h1>
+    <br>
+    <h3>The model uses XBOOST</h3>
+    {% if accuracy %}
+        <h4>Accuracy: {{ accuracy }}</h4>
+    {% endif %}
+
+    <form action="/data" method="post" enctype="multipart/form-data" id="myForm">
+        <input type="submit" value="ENTER YOUR DATA" />
+    </form>
+</body>
+</html>
